@@ -32,6 +32,24 @@ impl Todos {
             }
         }
     }
+    pub fn mark_as_completed(&mut self, i: usize) {
+        let index = i - 1;
+        if let Some(task) = self.list.get_mut(index) {
+            task.completed = true;
+            println!("task is marked as completed x try to list them")
+        } else {
+            println!("No task found at index {}", i);
+        }
+    }
+    pub fn delete(&mut self, i: usize) {
+        let index = i - 1;
+        if index < self.list.len() {
+            self.list.remove(index);
+            println!("Task is removed.");
+        } else {
+            println!("No task found at index {}", i);
+        }
+    }
 }
 
 fn main() {
